@@ -7,9 +7,11 @@ const router = express.Router();
 
 // Generate JWT
 const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET || 'your_jwt_secret_key_here', {
-    expiresIn: '7d'
-  });
+  return jwt.sign(
+    { id },
+    process.env.JWT_SECRET || 'your_jwt_secret_key_here',
+    { expiresIn: '7d' }
+  );
 };
 
 // @POST /api/auth/register
@@ -43,6 +45,7 @@ router.post('/register', async (req, res) => {
       role: user.role,
       token: generateToken(user._id)
     });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -74,6 +77,7 @@ router.post('/login', async (req, res) => {
       role: user.role,
       token: generateToken(user._id)
     });
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -82,6 +86,11 @@ router.post('/login', async (req, res) => {
 // @GET /api/auth/me
 router.get('/me', protect, async (req, res) => {
   res.json(req.user);
+});
+
+// ✅ Test route
+router.get('/', (req, res) => {
+  res.send("Auth route working 🚀");
 });
 
 module.exports = router;
