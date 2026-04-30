@@ -9,23 +9,23 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "*", // 🔥 Railway test ke liye open rakh
+  origin: "*",
   credentials: true
 }));
 app.use(express.json());
 
-// Routes
-//app.use('/api/auth', require('./routes/auth'));
-//app.use('/api/projects', require('./routes/projects'));
-//app.use('/api/tasks', require('./routes/tasks'));
-//app.use('/api/users', require('./routes/users'));
+// Routes ✅ UNCOMMENTED
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/projects', require('./routes/projects'));
+app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/users', require('./routes/users'));
 
-// Root Route (IMPORTANT)
+// Root Route
 app.get('/', (req, res) => {
   res.send('Backend is running 🚀');
 });
 
-// 🔥 MongoDB + Server start
+// MongoDB + Server start
 const startServer = async () => {
   try {
     if (!process.env.MONGO_URI) {
