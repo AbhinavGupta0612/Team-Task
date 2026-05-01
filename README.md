@@ -2,8 +2,10 @@
 
 A full-stack web application where teams can create projects, assign tasks, and track progress with role-based access control (Admin/Member).
 
-**Live URL:** `https://your-app.railway.app` *(replace after deployment)*  
-**GitHub Repo:** `https://github.com/yourusername/team-task-manager`
+## 🌐 Live URLs
+- **Frontend (Vercel):** https://team-task.vercel.app
+- **Backend (Railway):** https://team-task-production.up.railway.app
+- **GitHub Repo:** https://github.com/AbhinavGupta0612/Team-Task
 
 ---
 
@@ -27,18 +29,19 @@ A full-stack web application where teams can create projects, assign tasks, and 
 |-------|-----------|
 | Frontend | React.js 18, React Router v6 |
 | Backend | Node.js, Express.js |
-| Database | MongoDB with Mongoose |
+| Database | MongoDB Atlas (Mongoose) |
 | Auth | JWT (JSON Web Tokens) + bcrypt |
 | Styling | Custom CSS with CSS Variables |
 | Notifications | react-hot-toast |
-| Deployment | Railway |
+| Frontend Deployment | Vercel |
+| Backend Deployment | Railway |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-team-task-manager/
+Team-Task/
 ├── backend/
 │   ├── models/
 │   │   ├── User.js          # User schema (name, email, password, role)
@@ -137,8 +140,8 @@ team-task-manager/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/team-task-manager.git
-cd team-task-manager
+git clone https://github.com/AbhinavGupta0612/Team-Task.git
+cd Team-Task
 ```
 
 ### 2. Setup Backend
@@ -153,8 +156,7 @@ npm run dev
 ### 3. Setup Frontend
 ```bash
 cd frontend
-npm install
-# For local dev, proxy is already set to localhost:5000
+npm install --legacy-peer-deps
 npm start
 ```
 
@@ -162,43 +164,25 @@ The app will be running at `http://localhost:3000`
 
 ---
 
-## 🌐 Deployment on Railway
+## 🌐 Deployment
 
-### Step 1: Push to GitHub
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/yourusername/team-task-manager.git
-git push -u origin main
-```
+### Backend — Railway
+- Root Directory: `backend`
+- Start Command: `node server.js`
+- Environment Variables:
+  ```
+  MONGO_URI=your_mongodb_connection_string
+  JWT_SECRET=your_secret_key
+  NODE_ENV=production
+  ```
 
-### Step 2: Deploy Backend
-1. Go to [railway.app](https://railway.app) → New Project
-2. Select **Deploy from GitHub** → pick your repo
-3. Set **Root Directory** to `backend`
-4. Add environment variables:
-   ```
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_secret_key
-   PORT=5000
-   FRONTEND_URL=https://your-frontend.railway.app
-   ```
-5. Deploy ✅
-
-### Step 3: Deploy Frontend
-1. Add new service in same Railway project
-2. Set **Root Directory** to `frontend`
-3. Add environment variable:
-   ```
-   REACT_APP_API_URL=https://your-backend.railway.app/api
-   ```
-4. Deploy ✅
-
-### Step 4: Get MongoDB on Railway
-1. In Railway project → Add Plugin → MongoDB
-2. Copy the `MONGO_PUBLIC_URL` value
-3. Paste as `MONGO_URI` in backend environment variables
+### Frontend — Vercel
+- Root Directory: `frontend`
+- Framework: Create React App
+- Environment Variable:
+  ```
+  REACT_APP_API_URL=https://team-task-production.up.railway.app/api
+  ```
 
 ---
 
@@ -216,18 +200,6 @@ git push -u origin main
 2. Wait to be added to a project by an Admin
 3. View your assigned tasks in **My Tasks**
 4. Update task status as you work
-
----
-
-## 📸 Screenshots
-
-*(Add screenshots after deployment)*
-
----
-
-## 🤝 Contributing
-
-Pull requests are welcome!
 
 ---
 
