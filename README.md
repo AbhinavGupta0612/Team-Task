@@ -3,7 +3,7 @@
 A full-stack web application where teams can create projects, assign tasks, and track progress with role-based access control (Admin/Member).
 
 ## 🌐 Live URLs
-- **Frontend (Vercel):** https://team-task.vercel.app
+- **Frontend (Vercel):** https://team-task-ten.vercel.app
 - **Backend (Railway):** https://team-task-production.up.railway.app
 - **GitHub Repo:** https://github.com/AbhinavGupta0612/Team-Task
 
